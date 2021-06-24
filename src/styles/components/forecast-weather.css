@@ -1,0 +1,49 @@
+.card__title {
+  text-align: left;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  letter-spacing: 0.01em;
+  color: #385774;
+  color: steelblue;
+  margin-bottom: 10px;
+}
+
+.weather {
+  padding: 10px;
+  min-width: 170px;
+  background: #fafafa;
+  box-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.time {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.01em;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.temp {
+  font-size: 30px;
+  line-height: 35px;
+  letter-spacing: 0.01em;
+  color: #385774;
+  color: steelblue;
+}
+
+.description {
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  color: #385774;
+  color: steelblue;
+}
