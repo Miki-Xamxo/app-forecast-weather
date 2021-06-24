@@ -5,6 +5,7 @@ import 'swiper/swiper-bundle.css';
 
 import { getDataWeather, setCity } from "../redux/actions/weather";
 import { ForecastWeather } from "../components";
+import axios from "axios";
 
 
 const Home = () => {
@@ -38,6 +39,13 @@ const Home = () => {
                     <input type="text" onChange={handleChangeValue} value={value} />
                     <button  onClick={onClickSearchCity} disabled={value === ''}>Поиск</button>
                 </form>
+                <div className='list-city'>
+                    <ul>
+                        <li>Москва</li>
+                        <li>Назрань</li>
+                        <li>Казань</li>
+                    </ul>
+                </div>
                 <div className='title'>{cityName}</div>
                 {
                     items.map((item, _, arr) =>
