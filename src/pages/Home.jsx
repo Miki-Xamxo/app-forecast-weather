@@ -3,18 +3,16 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import 'swiper/swiper-bundle.css';
 
-import { getDataWeather, setCity } from "../redux/actions/weather";
-import { ForecastWeather } from "../components";
-import axios from "axios";
-
+import { getDataWeather, setCityName } from "../redux/actions/weather";
+import { ForecastWeather, ListPoup } from "../components";
+import { setInputValue } from "../redux/actions/input-value";
 
 const Home = () => {
 
-    const [value, setValue] = React.useState('')
-    const {items, cityName,  isLoading} = useSelector(({weather}) => weather)
+    const {items, cityName} = useSelector(({weather}) => weather)
+    const { isFetching, visiblePopup} = useSelector(({ cities }) => cities)
     
     const dispatch = useDispatch()
-
 
     React.useEffect(() => {
         if(cityName){
@@ -22,40 +20,33 @@ const Home = () => {
         }
     }, [cityName])
 
-    const handleChangeValue = (e) => {
-        let value = e.target.value
-        setValue(value)
+
+
+    const onClickSearchCity = (city) => {
+        dispatch(setCityName(city))
+        dispatch(setInputValue(''))
     }
 
-    const onClickSearchCity = (e) => {
-        e.preventDefault()
-        dispatch(setCity(value))
-        setValue('')
-    }
+    console.log('render home')
+
     return (
         <div className='main'>
             <div className='container'>
-                <form>
-                    <input type="text" onChange={handleChangeValue} value={value} />
-                    <button  onClick={onClickSearchCity} disabled={value === ''}>Поиск</button>
-                </form>
-                <div className='list-city'>
-                    <ul>
-                        <li>Москва</li>
-                        <li>Назрань</li>
-                        <li>Казань</li>
-                    </ul>
-                </div>
+                
+                {
+                    visiblePopup && !isFetching  && <ListPoup   onClickSearchCity={onClickSearchCity} />
+                }
                 <div className='title'>{cityName}</div>
                 {
-                    items.map((item, _, arr) =>
+                    items.map((item, _, arr) => 
                         <ForecastWeather 
                             key={item.day}
                             today={arr[0].day}
                             nextday={arr[1].day}
                             date={item.date}
                             day={item.day}
-                            data={item.data} /> )
+                            data={item.data} 
+                        />)
                 }
             </div>
         </div>

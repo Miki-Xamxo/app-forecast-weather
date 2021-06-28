@@ -65,7 +65,7 @@ const weather = (state = initialState, action) => {
                 ...state,
                 isLoading: action.payload
             }
-        case 'SET_CITY':
+        case 'SET_CITY_NAME':
             return {
                 ...state,
                 cityName: action.payload

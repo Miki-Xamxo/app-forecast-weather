@@ -5,3 +5,9 @@ export const weatherUrl = {
         return axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName !== '' ? cityName : ''}&units=metric&lang=ru&appid=9564702c3543cd18a286664bcd09dcac`) 
     }
 }
+
+export const cityUrl = {
+    getCity(city) {
+        return axios.get(`http://localhost:3001/cities?q=${city}`)
+    }
+}
